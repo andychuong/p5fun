@@ -1,11 +1,25 @@
+
+
 // variables for y coordinate of car 1 and 2
 var y1;
 var y2;
+var gameOver = false;
+var blueWin = false;
+var greenWin = false;
+var fontRegular;
+
+function preload() {
+   fontRegular = loadFont("Bahiana-Regular.ttf");
+
+}
 
 function setup() {
 	createCanvas(windowWidth,windowHeight);
 	y1 = windowHeight - (windowHeight/8);
 	y2 = windowHeight - (windowHeight/8);
+
+	//textFont(fontRegular);
+	//text("Font Style Normal", 10, 30);
 	
 
 }
@@ -35,7 +49,11 @@ function draw() {
 	//start line
 	fill(186);
 	rect(windowWidth/2-200,windowHeight-windowHeight/7,400,10);
-	print(windowHeight);
+	//print(windowHeight);
+
+	//text
+	//textSize(12);
+	//textFont("fontRegular");
 
 	//blue car
 	fill(66, 185, 244);
@@ -46,34 +64,67 @@ function draw() {
 	fill(63, 244, 90);
 	rect(windowWidth/2 + 95,y2,20,60);
 
+	//Movement
+
+	if(keyCode == 49){//1
+		if(y1>= 60){
+	    	y1--;//blue
+		}
+	}
+	 if (keyCode == UP_ARROW){//up arrow
+  		if(y2>= 60){
+	    	y2--;//green
+		}
+	}
+	
+	if(keyCode == 27){//escape
+		y1=windowHeight - (windowHeight/8);
+		y2=windowHeight - (windowHeight/8);
+	}
+
+	//Win Check
+	if(y1 < 60 && !gameOver){
+		blueWin = true;
+		gameOver = true;
+	}
+	if(y2 < 60 && !gameOver){
+		greenWin = true;
+		gameOver = true;
+	}
+	print(y2);
+	print(gameOver);
+
+
 
 
 	//----------> OLD OLD OLD OLD OLD OLD OLD <--------
 	// key code for w is 87
 	// http://keycode.info/
 
-	keyPressed();
+	//keyPressed();
 
 	/*
 	if(keyIsDown(87)){
 		y2--;
 		//print(y2);
 	}
-	  
+	  wwwwwwww
 
 	if (keyIsDown(UP_ARROW)){
 		y1--;
 	}
 	*/
-}
 
+	
+}
+/*
 function keyPressed() {
   if (keyCode == UP_ARROW){//up arrow
   		if(y2>= 60){
 	    	y2--;
 		}
 	}
-	else if(keyCode == 87){//w
+	if(keyCode == 87){//w
 		if(y1>= 60){
 	    	y1--;
 		}
@@ -83,6 +134,7 @@ function keyPressed() {
 		y2=windowHeight - (windowHeight/8);
 	}
 }
+*/
 
 function windowResized(){
 	resizeCanvas(windowWidth,windowHeight);
