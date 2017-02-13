@@ -1,6 +1,6 @@
 // variables for y coordinate of car 1 and 2
-var y1 = 10;
-var y2 = 10;
+var y1 = 700;
+var y2 = 700;
 
 
 function setup() {
@@ -13,32 +13,27 @@ function draw() {
 
 	background(100);
 
-fill("blue");
-rect(50,y2,110,120);
-print(y2);
+	fill("blue");
+	rect(windowWidth/2 - 50,y1,30,100);
+	print(y2);
 
-fill("red");
-rect(0,y2,0,0);
+	fill("red");
+	rect(windowWidth/2 + 50,y2,30,100);
 
-if(keyIsDown(UP_ARROW)){
-		y2++;
-		print(y2);
+	// key code for w is 87
+	// http://keycode.info/
+	if(keyIsDown(87)){
+		y2--;
+		//print(y2);
 	}
-  
-}
+	  
 
-function moveC1(){
 	if (keyIsDown(UP_ARROW)){
-
+		y1--;
 	}
 }
 
-function moveC2(){
-	if(keyIsDown(UP_ARROW)){
-		y2++;
-		print(y2);
-	}
-}
+
 
 function windowResized(){
 	resizeCanvas(windowWidth,windowHeight);
