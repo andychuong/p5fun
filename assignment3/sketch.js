@@ -22,6 +22,10 @@ function draw() {
 
 	// key code for w is 87
 	// http://keycode.info/
+
+	keyPressed();
+
+	/*
 	if(keyIsDown(87)){
 		y2--;
 		//print(y2);
@@ -31,9 +35,21 @@ function draw() {
 	if (keyIsDown(UP_ARROW)){
 		y1--;
 	}
+	*/
 }
 
-
+function keyPressed() {
+  if (keyCode == UP_ARROW){//up arrow
+	    y1--;
+	}
+	else if(keyCode == 87){//w
+		y2--;
+	}
+	else if(keyCode == 27){//escape
+		y1=700;
+		y2=700;
+	}
+}
 
 function windowResized(){
 	resizeCanvas(windowWidth,windowHeight);
